@@ -391,10 +391,10 @@ if ( in_array( 'woocommerce/woocommerce.php', apply_filters( 'active_plugins', g
 			function get_sermepa_digest($sermepa_args) {			
 				if ( $this->extended_sha1_algorithm == 'yes' ) {
 					$string = "{$sermepa_args['Ds_Merchant_Amount']}{$sermepa_args['Ds_Merchant_Order']}{$sermepa_args['Ds_Merchant_MerchantCode']}{$sermepa_args['Ds_Merchant_Currency']}{$sermepa_args['Ds_Merchant_TransactionType']}{$sermepa_args['Ds_Merchant_MerchantURL']}{$this->secret_key}";
-					$digest = sha1( $string );
+					$digest = strtoupper(sha1( $string ));
 				} else {
 					$string = "{$sermepa_args['Ds_Merchant_Amount']}{$sermepa_args['Ds_Merchant_Order']}{$sermepa_args['Ds_Merchant_MerchantCode']}{$sermepa_args['Ds_Merchant_Currency']}{$this->secret_key}";
-					$digest = sha1( $string );
+					$digest = strtoupper(sha1( $string ));
 				}
 				
 				if ( 'yes' == $this->debug )
